@@ -46,16 +46,26 @@ const gToolList = {
 
 $(document).ready(function () {
     initSelectCategory();
+
+    $('#sCategory').change(function () {
+        initSelectTool();
+    });
 });
 
 function initSelectCategory() {
+    $('#sCategory').empty();
+    $('#sCategory').append('<option value="" disabled selected>请选择类别</option>');
+
     for (var key in gToolList) {
         $('#sCategory').append('<option value="' + key + '">' + gToolList[key]['name'] + '</option>');
     }
 }
 
 function initSelectTool() {
+    console.log('select');
     var list = gToolList[$('#sCategory').val()].childList;
+    $('#sTool').empty();
+    $('#sTool').append('<option value="" disabled selected>请选择工具</option>');
     list.map(function (item) {
         $('#sTool').append('<option value="' + item['id'] + '">' + item['name'] + '</option>');
     });

@@ -18,9 +18,9 @@
   "content_scripts": [
     {
       "js": [
-        "js/popup.js",
         "js/jquery-2.1.1.min.js",
-        "js/materialize.min.js"
+        "js/materialize.min.js",
+        "js/popup.js"
       ],
       "css": [
         "css/custom.css",
@@ -32,7 +32,8 @@
       ],
       "matches": [
         "http://*/*"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ]
 }
