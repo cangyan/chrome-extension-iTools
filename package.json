@@ -1,0 +1,44 @@
+{
+  "name": "itools",
+  "description": "面向接口开发人员各种常用小工具集合.",
+  "version": "1.0.0",
+  "main": "index.html",
+  "keywords": [
+    "react",
+    "programmer",
+    "tool"
+  ],
+  "author": "Mingfeng Wang",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-es2015-spread": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^3.0.0",
+    "redux-devtools": "^3.0.0",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "promise": "^7.1.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.1",
+    "react-router": "^2.0.*",
+    "react-tap-event-plugin": "^2.0.0",
+    "redux": "^3.0.4",
+    "redux-logger": "^2.7.4",
+    "redux-promise": "^0.5.3",
+    "redux-promise-middleware": "^4.2.0",
+    "redux-thunk": "^2.1.0"
+  }
+}
