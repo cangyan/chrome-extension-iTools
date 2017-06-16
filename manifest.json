@@ -4,7 +4,7 @@
   "description": "面向接口开发人员各种常用小工具集合.",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "images/icon.png",
+    "default_icon": "icon.png",
     "default_popup": "index.html"
   },
   "permissions": [
@@ -18,17 +18,10 @@
   "content_scripts": [
     {
       "js": [
-        "js/jquery-2.1.1.min.js",
-        "js/materialize.min.js",
-        "js/popup.js"
+        "js/app.js"
       ],
       "css": [
-        "css/custom.css",
-        "css/materialize.min.css",
-        "css/materialize.css"
-      ],
-      "fonts": [
-        "*"
+        "css/main.css"
       ],
       "matches": [
         "http://*/*"

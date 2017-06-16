@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
+var buffer = require("vinyl-buffer");
 var browserify = require('browserify');
 var notify = require("gulp-notify");
 var babelify = require('babelify');
@@ -22,6 +23,11 @@ var files = [
     'icon.png'
 ];
 
+var props = { entries: [scriptsDir + mainJsFile], };
+var bundler = watchify(browserify(props, watchify.args));
+// bundler.on('update', bundle);
+// var bundler = browserify(props).plugin(watchify);
+
 function handleErrors() {
     var args = Array.prototype.slice.call(arguments);
     notify.onError({
@@ -31,20 +37,25 @@ function handleErrors() {
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
-gulp.task('browser-watch', ['buildScript', 'buildCss', 'buildOtherFiles'], function (done) {
+function bundle() {
+    return bundler
+        .transform(babelify, {"presets": [
+            "es2015",
+            "react"
+        ]})
+        .bundle()
+        .on('error', handleErrors)
+        .pipe(source(mainJsFile))
+        .pipe(buffer())
+        .pipe(gulp.dest(buildScriptDir));
+}
+
+gulp.task('browser-watch', [], function (done) {
     browserSync.reload();
     done();
 });
 
-gulp.task('buildScript', function() {
-    var props = { entries: [scriptsDir + mainJsFile], };
-    var bundler = browserify(props);
-    bundler.transform(babelify, {presets: ['es2015', 'react']});
-    var stream = bundler.bundle();
-    return stream.on('error', handleErrors)
-        .pipe(source(mainJsFile))
-        .pipe(gulp.dest(buildScriptDir));
-});
+gulp.task('buildScript', bundle);
 
 gulp.task('buildCss', function() {
     return gulp.src('css/*.css')
@@ -61,7 +72,7 @@ gulp.task('buildOtherFiles', function () {
 
 gulp.task('auto', function () {
     gulp.watch('css/*.css', ['buildCss', 'browser-watch']);
-    gulp.watch(scriptsDir + mainJsFile, ['buildScript', 'browser-watch']);
+    gulp.watch(scriptsDir + '**/*.js', ['buildScript', 'browser-watch']);
     gulp.watch(files, ['buildOtherFiles', 'browser-watch']);
 });
 
