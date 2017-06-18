@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react"
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {AppBar, Drawer, MenuItem, Paper, FlatButton} from 'material-ui';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 let muiTheme = getMuiTheme({
     fontFamily: 'Microsoft YaHei'
@@ -20,7 +20,7 @@ export default class DashBoard extends Component {
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <AppBar
-                        title="飞凡运营工具"
+                        title="开发工具集合"
                         onLeftIconButtonTouchTap={ () => this.handleLeftIconButtonTouchTap() }
                     />
 
@@ -30,12 +30,9 @@ export default class DashBoard extends Component {
                         open={this.state.open}
                         onRequestChange={(open) => this.setState({open})}
                     >
-                        <Link to="/">
-                            <MenuItem>首页</MenuItem>
-                        </Link>
-                        <Link to="/upload_images">
-                            <MenuItem>批量上传图片</MenuItem>
-                        </Link>
+
+                        <MenuItem containerElement={<Link to="/"/>}>首页</MenuItem>
+                        <MenuItem containerElement={<Link to="/page_json"/>}>JSON</MenuItem>
                     </Drawer>
 
                     <div className="container">

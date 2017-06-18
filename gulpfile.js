@@ -71,9 +71,9 @@ gulp.task('buildOtherFiles', function () {
 });
 
 gulp.task('auto', function () {
-    gulp.watch('css/*.css', ['buildCss', 'browser-watch']);
-    gulp.watch(scriptsDir + '**/*.js', ['buildScript', 'browser-watch']);
-    gulp.watch(files, ['buildOtherFiles', 'browser-watch']);
+    gulp.watch('css/*.css', ['buildCss']);
+    gulp.watch(scriptsDir + '**/*.js', ['buildScript']);
+    gulp.watch(files, ['buildOtherFiles']);
 });
 
 gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto'], function () {
@@ -82,4 +82,6 @@ gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto'], fun
             baseDir: "./build/"
         }
     });
+
+    gulp.watch('./build/**').on("change", browserSync.reload);
 });
