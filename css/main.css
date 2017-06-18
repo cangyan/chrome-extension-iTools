@@ -1,0 +1,13 @@
+body {
+    min-width: 720px;
+    min-height: 560px;
+    margin: 0;
+}
+
+.authorInfo {
+    position: absolute;
+    bottom: 10px;
+    font-size: 22px;
+    right: 28px;
+    clear: both;
+}
