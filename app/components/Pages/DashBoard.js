@@ -35,7 +35,6 @@ export default class DashBoard extends Component {
                         <MenuItem containerElement={<Link to="/page_json"/>}>JSON</MenuItem>
                     </Drawer>
 
-                    <div className="authorInfo">Author: me.wmf@foxmail.com</div>
                     <div className="container">
                         {this.props.children}
                     </div>

@@ -39,10 +39,16 @@ function handleErrors() {
 
 function bundle() {
     return bundler
-        .transform(babelify, {"presets": [
-            "es2015",
-            "react"
-        ]})
+        .transform(babelify, {
+            "presets": [
+                "es2015",
+                "react"
+            ],
+            "plugins": [
+                "transform-object-rest-spread",
+                "transform-decorators-legacy"
+            ]
+        })
         .bundle()
         .on('error', handleErrors)
         .pipe(source(mainJsFile))
