@@ -6,6 +6,7 @@ import {formatJsonString, jsonStringToArray} from "../../actions/JsonAction"
 
 @connect((store) => {
     return {
+        type: store.JsonReducer.type,
         output: store.JsonReducer.output
     };
 })
@@ -22,7 +23,36 @@ export default class Json extends Component {
     }
 
     componentDidUpdate() {
-        this.refs.json_output.innerHTML = JSON.stringify(JSON.parse(this.props.output), null, 4);
+        switch (this.props.type) {
+            case 1:
+                try {
+                    var json = JSON.parse(this.props.output);
+                    this.refs.json_output.innerHTML = JSON.stringify(json, null, 4);
+                } catch (e) {
+                    this.refs.json_output.innerHTML = e;
+                }
+                break;
+            case 2:
+                try {
+                    var json = JSON.parse(this.props.output);
+                    var str = '';
+                    for (var key in json) {
+                        if (typeof json[key] === 'string') {
+                            str += '"'+key+'"=>"'+json[key]+'",'
+                        } else {
+                            str += '"'+key+'"=>'+json[key]+','
+                        }
+                    }
+
+                    str = '['+str.replace(/,$/, '')+']';
+
+                    this.refs.json_output.innerHTML = str;
+                } catch (e) {
+                    this.refs.json_output.innerHTML = e;
+                }
+                break;
+        }
+
     }
 
     render() {
@@ -45,8 +75,9 @@ export default class Json extends Component {
                     <RaisedButton label="转为数组" primary={true} onTouchTap={ () => this.handleFormatJsonToArray() }/>
                 </div>
                 <div className="cRight">
-                    <div id="output" name="output">
-                        <pre ref="json_output" id="json_output">
+                    <div>
+                        <pre>
+                            <code ref="json_output" id="json_output"></code>
                         </pre>
                     </div>
                 </div>

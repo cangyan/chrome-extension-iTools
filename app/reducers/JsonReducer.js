@@ -1,10 +1,12 @@
 export default function reducer(state={
+    type: null,
     output: null
 }, action) {
     switch (action.type) {
         case "JSON_FORMAT": {
             return {
                 ...state,
+                type: action.payload.type,
                 output: action.payload.output,
             };
         }
@@ -12,6 +14,7 @@ export default function reducer(state={
         case "JSON_TO_ARRAY": {
             return {
                 ...state,
+                type: action.payload.type,
                 output: action.payload.output,
             };
         }
