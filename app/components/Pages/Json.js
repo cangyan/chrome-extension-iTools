@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux";
 import {TextField, RaisedButton} from 'material-ui';
 
-import {formatJsonString, jsonStringToArray} from "../../actions/JsonAction"
+import {formatJsonString, jsonStringToArray, jsonStringToURLParams} from "../../actions/JsonAction"
 
 @connect((store) => {
     return {
@@ -51,6 +51,20 @@ export default class Json extends Component {
                     this.refs.json_output.innerHTML = e;
                 }
                 break;
+            case 3:
+                try {
+                    var json = JSON.parse(this.props.output);
+                    var str = '';
+                    for (var key in json) {
+                        str += key+'='+json[key]+'&'
+                    }
+
+                    str = str.replace(/&$/, '');
+                    this.refs.json_output.innerHTML = str;
+                } catch (e) {
+                    this.refs.json_output.innerHTML = e;
+                }
+                break;
         }
 
     }
@@ -73,6 +87,8 @@ export default class Json extends Component {
                     <RaisedButton label="格式化" primary={true} onTouchTap={ () => this.handleFormatJsonString() }/>
                     <p />
                     <RaisedButton label="转为数组" primary={true} onTouchTap={ () => this.handleFormatJsonToArray() }/>
+                    <p />
+                    <RaisedButton label="转为URL参数" primary={true} onTouchTap={ () => this.handleFormatJsonToURLParams() }/>
                 </div>
                 <div className="cRight">
                     <div>
@@ -91,5 +107,9 @@ export default class Json extends Component {
 
     handleFormatJsonToArray() {
         this.props.dispatch(jsonStringToArray(this.refs.input.getValue()));
+    }
+
+    handleFormatJsonToURLParams() {
+        this.props.dispatch(jsonStringToURLParams(this.refs.input.getValue()));
     }
 }

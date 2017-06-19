@@ -17,3 +17,13 @@ export function jsonStringToArray(content) {
         }
     }
 }
+
+export function jsonStringToURLParams(content) {
+    return {
+        type: "JSON_TO_URL_PARAMS",
+        payload: {
+            type: 3,
+            output: content
+        }
+    }
+}
