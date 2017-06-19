@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+code {
+    word-break: break-all;
+}
+
 .authorInfo {
     position: absolute;
     bottom: 10px;

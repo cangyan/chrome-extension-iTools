@@ -25,8 +25,6 @@ var files = [
 
 var props = { entries: [scriptsDir + mainJsFile], };
 var bundler = watchify(browserify(props, watchify.args));
-// bundler.on('update', bundle);
-// var bundler = browserify(props).plugin(watchify);
 
 function handleErrors() {
     var args = Array.prototype.slice.call(arguments);
@@ -56,14 +54,9 @@ function bundle() {
         .pipe(gulp.dest(buildScriptDir));
 }
 
-gulp.task('browser-watch', function () {
-    browserSync.init({
-        server: {
-            baseDir: "./build/"
-        }
-    });
-
-    gulp.watch('./build/**').on("change", browserSync.reload);
+gulp.task('browser-watch', function (done) {
+    browserSync.reload();
+    done();
 });
 
 gulp.task('buildScript', bundle);
@@ -87,4 +80,14 @@ gulp.task('auto', function () {
     gulp.watch(files, ['buildOtherFiles']);
 });
 
-gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto', 'browser-watch']);
+gulp.task('build', ['buildScript', 'buildCss', 'buildOtherFiles']);
+
+gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto'], function () {
+    browserSync.init({
+        server: {
+            baseDir: "./build/"
+        }
+    });
+
+    gulp.watch('./build/**').on("change", browserSync.reload);
+});

@@ -35,16 +35,24 @@ export default class Json extends Component {
             case 2:
                 try {
                     var json = JSON.parse(this.props.output);
-                    var str = '';
-                    for (var key in json) {
-                        if (typeof json[key] === 'string') {
-                            str += '"'+key+'"=>"'+json[key]+'",'
-                        } else {
-                            str += '"'+key+'"=>'+json[key]+','
-                        }
-                    }
+                    var fn = function f(obj) {
+                        var res = '';
+                        if (typeof obj === 'object') {
+                            for (var key in obj) {
+                                res += '"'+key+'"=>'+fn(obj[key]);
+                            }
 
-                    str = '['+str.replace(/,$/, '')+']';
+                            return '['+res.replace(/,$/, '')+']';
+                        } else {
+                            if (typeof obj === 'string') {
+                                return '"'+obj+'",';
+                            } else {
+                                return obj+',';
+                            }
+                        }
+                    };
+
+                    var str = fn(json);
 
                     this.refs.json_output.innerHTML = str;
                 } catch (e) {
@@ -56,7 +64,7 @@ export default class Json extends Component {
                     var json = JSON.parse(this.props.output);
                     var str = '';
                     for (var key in json) {
-                        str += key+'='+json[key]+'&'
+                        str += key+'='+JSON.stringify(json[key]).replace(/^\"/, "").replace(/\"$/, "")+'&'
                     }
 
                     str = str.replace(/&$/, '');
