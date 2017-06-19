@@ -56,9 +56,14 @@ function bundle() {
         .pipe(gulp.dest(buildScriptDir));
 }
 
-gulp.task('browser-watch', [], function (done) {
-    browserSync.reload();
-    done();
+gulp.task('browser-watch', function () {
+    browserSync.init({
+        server: {
+            baseDir: "./build/"
+        }
+    });
+
+    gulp.watch('./build/**').on("change", browserSync.reload);
 });
 
 gulp.task('buildScript', bundle);
@@ -82,12 +87,4 @@ gulp.task('auto', function () {
     gulp.watch(files, ['buildOtherFiles']);
 });
 
-gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto'], function () {
-    browserSync.init({
-        server: {
-            baseDir: "./build/"
-        }
-    });
-
-    gulp.watch('./build/**').on("change", browserSync.reload);
-});
+gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto', 'browser-watch']);
