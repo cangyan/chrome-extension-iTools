@@ -92,11 +92,11 @@ export default class Json extends Component {
                     />
                 </div>
                 <div className="cCenter">
-                    <RaisedButton label="格式化" primary={true} onTouchTap={ () => this.handleFormatJsonString() }/>
+                    <RaisedButton label="格式化" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonString() }/>
                     <p />
-                    <RaisedButton label="转为数组" primary={true} onTouchTap={ () => this.handleFormatJsonToArray() }/>
+                    <RaisedButton label="转为数组" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonToArray() }/>
                     <p />
-                    <RaisedButton label="转为URL参数" primary={true} onTouchTap={ () => this.handleFormatJsonToURLParams() }/>
+                    <RaisedButton label="转为URL参数" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonToURLParams() }/>
                 </div>
                 <div className="cRight">
                     <div>

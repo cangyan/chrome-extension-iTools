@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "程序员常用工具集",
   "description": "面向接口开发人员各种常用小工具集合.",
-  "version": "1.0",
+  "version": "1.0.1",
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "index.html"
