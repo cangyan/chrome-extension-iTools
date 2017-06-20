@@ -2,31 +2,31 @@
   "manifest_version": 2,
   "name": "程序员常用工具集",
   "description": "面向接口开发人员各种常用小工具集合.",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "icons": {
+    "128": "icon.png"
+  },
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   },
   "permissions": [
-    "notifications",
-    "activeTab",
-    "unlimitedStorage"
-  ],
-  "optional_permissions": [
-    "debugger"
+    "notifications"
   ],
   "content_scripts": [
     {
-      "js": [
-        "js/app.js"
+      "matches": [
+        "http://127.0.1.1/*"
+      ],
+      "exclude_matches": [
+        "*://*/*"
       ],
       "css": [
         "css/main.css"
       ],
-      "matches": [
-        "http://*/*"
-      ],
-      "run_at": "document_end"
+      "js": [
+        "js/app.js"
+      ]
     }
   ]
 }

@@ -19,7 +19,7 @@ var mainJsFile = 'app.js';
 
 var files = [
     './manifest.json',
-    'index.html',
+    'popup.html',
     'icon.png'
 ];
 

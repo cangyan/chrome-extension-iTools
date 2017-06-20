@@ -20,7 +20,7 @@ export default class DashBoard extends Component {
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <AppBar
-                        title="开发工具集合"
+                        title="程序员常用工具集"
                         onLeftIconButtonTouchTap={ () => this.handleLeftIconButtonTouchTap() }
                     />
 
