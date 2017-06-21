@@ -85,7 +85,8 @@ gulp.task('build', ['buildScript', 'buildCss', 'buildOtherFiles']);
 gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto'], function () {
     browserSync.init({
         server: {
-            baseDir: "./build/"
+            baseDir: "./build/",
+            index: "popup.html"
         }
     });
 
