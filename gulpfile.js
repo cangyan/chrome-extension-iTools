@@ -1,21 +1,18 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
-var source = require('vinyl-source-stream');
-var buffer = require("vinyl-buffer");
-var browserify = require('browserify');
+var gutil = require("gulp-util");
 var notify = require("gulp-notify");
-var babelify = require('babelify');
-var watchify = require('watchify');
 var minifyCSS = require('gulp-minify-css');
 var browserSync = require('browser-sync').create();
+var webpack = require('webpack');
+var webpackConfig = require("./webpack.config.js");
 
 var scriptsDir = './app/';
 var cssDir = './css/';
 var buildDir = './build/';
-var buildScriptDir = './build/js/';
 var buildCssDir = './build/css/';
-var mainJsFile = 'app.js';
 
 var files = [
     './manifest.json',
@@ -23,8 +20,9 @@ var files = [
     'icon.png'
 ];
 
-var props = { entries: [scriptsDir + mainJsFile], };
-var bundler = watchify(browserify(props, watchify.args));
+var myDevConfig = Object.create(webpackConfig);
+// myDevConfig.devtool = "sourcemap";
+var devCompiler = webpack(myDevConfig);
 
 function handleErrors() {
     var args = Array.prototype.slice.call(arguments);
@@ -35,31 +33,10 @@ function handleErrors() {
     this.emit('end'); // Keep gulp from hanging on this task
 }
 
-function bundle() {
-    return bundler
-        .transform(babelify, {
-            "presets": [
-                "es2015",
-                "react"
-            ],
-            "plugins": [
-                "transform-object-rest-spread",
-                "transform-decorators-legacy"
-            ]
-        })
-        .bundle()
-        .on('error', handleErrors)
-        .pipe(source(mainJsFile))
-        .pipe(buffer())
-        .pipe(gulp.dest(buildScriptDir));
-}
-
 gulp.task('browser-watch', function (done) {
     browserSync.reload();
     done();
 });
-
-gulp.task('buildScript', bundle);
 
 gulp.task('buildCss', function() {
     return gulp.src('css/*.css')
@@ -75,14 +52,24 @@ gulp.task('buildOtherFiles', function () {
 });
 
 gulp.task('auto', function () {
-    gulp.watch('css/*.css', ['buildCss']);
-    gulp.watch(scriptsDir + '**/*.js', ['buildScript']);
+    gulp.watch(cssDir+'*.css', ['buildCss']);
+    gulp.watch(scriptsDir + '**/*.js', ['webpack']);
     gulp.watch(files, ['buildOtherFiles']);
 });
 
+gulp.task('webpack', function (callback) {
+    devCompiler.run(function(err, stats) {
+        if(err) throw new gutil.PluginError("webpack", err);
+        gutil.log("[webpack]", stats.toString({
+            colors: true
+        }));
+        callback();
+    });
+})
+
 gulp.task('build', ['buildScript', 'buildCss', 'buildOtherFiles']);
 
-gulp.task('default', ['buildScript', 'buildCss', 'buildOtherFiles', 'auto'], function () {
+gulp.task('default', ['webpack', 'buildCss', 'buildOtherFiles', 'auto'], function () {
     browserSync.init({
         server: {
             baseDir: "./build/",
