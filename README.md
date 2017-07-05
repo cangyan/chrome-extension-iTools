@@ -1,8 +1,8 @@
 # chrome-extension-iTools
 chrome扩展程序-常用开发工具集
 
-# TODO LISt
-- json串处理
+# TODO LIST
+- json串处理(DONE)
 - 随机数生成
 - md5
 - 日期转换
