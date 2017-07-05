@@ -9,8 +9,8 @@ chrome扩展程序-常用开发工具集
 - 身份证真伪查询
 - 查询字符串长度
 - 二维码生成
-- /待补充/
+- _待补充_
 
 # Screenshot
-![Alt text](screenshot/20170705105838.png?raw=true "Screenshot1")
-![Alt text](screenshot/20170705105925.png?raw=true "Screenshot2")
+![Alt text](screenshot/20170705111759.png?raw=true "Screenshot1")
+![Alt text](screenshot/20170705111838.png?raw=true "Screenshot2")
