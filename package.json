@@ -24,6 +24,7 @@
     "gulp": "^3.9.1",
     "gulp-minify-css": "^1.2.4",
     "gulp-notify": "^3.0.0",
+    "node-sass": "^4.5.3",
     "redux-devtools": "^3.0.0",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
