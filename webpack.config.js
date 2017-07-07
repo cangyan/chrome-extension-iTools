@@ -14,7 +14,11 @@ module.exports = {
                 exclude: /node_modules/,
                 query: {
                     cacheDirectory: true,
-                    presets: ['react', 'es2015']
+                    plugins: [
+                        "transform-object-rest-spread",
+                        "transform-decorators-legacy"
+                    ],
+                    presets: ['es2015', 'react']
                 }
             },
             {
