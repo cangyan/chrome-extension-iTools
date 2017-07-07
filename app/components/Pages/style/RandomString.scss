@@ -1,4 +1,35 @@
 .selfWrap {
     min-height: 486px;
-    margin: 6px;
+    margin: 9px;
+    .selectArea {
+        min-height: 486px;
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+        box-sizing: border-box;
+        padding: 0 4px 0 4px;
+        .title {
+            font-size: 18px;
+            margin: 8px 0 8px 0;
+        }
+    }
+    .outputArea {
+        min-height: 486px;
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+        border: 2px solid deepskyblue;
+        box-sizing: border-box;
+        padding: 0 4px 0 4px;
+        overflow: auto;
+        .errorOutput {
+            color: #dd1144;
+        }
+        .successOutput {
+            color: #00AA00;
+        }
+    }
 }
+
