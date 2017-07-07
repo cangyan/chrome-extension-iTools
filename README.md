@@ -3,7 +3,7 @@ chrome扩展程序-常用开发工具集
 
 # TODO LIST
 - json串处理(DONE)
-- 随机数生成
+- 随机数生成(DONE)
 - md5
 - 日期转换
 - 身份证真伪查询
