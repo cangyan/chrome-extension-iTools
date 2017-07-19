@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux";
 import {TextField, RaisedButton, Checkbox} from 'material-ui';
-import './style/RandomString.scss';
-import { createRandomString } from '../../actions/RandomStringAction'
+import './style.scss';
+import { createRandomString } from '../../../actions/RandomStringAction'
 
 @connect((store) => {
     return {
