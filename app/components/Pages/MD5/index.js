@@ -29,7 +29,7 @@ export default class MD5 extends Component {
 
     render() {
         return (
-            <div className="wrap">
+            <div className="MD5wrap">
                 <div className="cLeft">
                     <TextField
                         hintText="请输入"

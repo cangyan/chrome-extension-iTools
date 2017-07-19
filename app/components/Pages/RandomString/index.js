@@ -34,7 +34,7 @@ export default class RandomString extends Component {
         var outputClass = this.props.hasError ? 'errorOutput' : 'successOutput';
 
         return (
-            <div className="selfWrap">
+            <div className="randomStringWrap">
                 <div className="selectArea">
                     <div className="title">请选择生成参数:</div>
                     <Checkbox
