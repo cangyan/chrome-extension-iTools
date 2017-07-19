@@ -4,6 +4,15 @@ export default function reducer(state={
     output: null
 }, action) {
     switch (action.type) {
+        case "INIT": {
+            return {
+                ...state,
+                hasError: false,
+                originString: null,
+                output: null
+            }
+        }
+
         case "ERROR": {
             return {
                 ...state,

@@ -20,7 +20,11 @@ export default class Json extends Component {
     }
 
     componentDidMount() {
-
+        this.props.dispatch({
+            type: "INIT",
+            payload: {
+            }
+        });
     }
 
     componentDidUpdate() {

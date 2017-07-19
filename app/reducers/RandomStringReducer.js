@@ -7,6 +7,18 @@ export default function reducer(state={
     output: null
 }, action) {
     switch (action.type) {
+        case "INIT": {
+            return {
+                ...state,
+                hasNumeric: false,
+                hasUppercase: false,
+                hasLowercase: false,
+                stringLength: 0,
+                hasError: false,
+                output: null
+            };
+        }
+
         case "updateInput": {
             return {
                 ...state,

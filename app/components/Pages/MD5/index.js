@@ -20,7 +20,11 @@ export default class MD5 extends Component {
     }
 
     componentDidMount() {
-
+        this.props.dispatch({
+            type: "INIT",
+            payload: {
+            }
+        });
     }
 
     componentDidUpdate() {

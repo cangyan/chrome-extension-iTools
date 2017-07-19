@@ -3,6 +3,14 @@ export default function reducer(state={
     output: null
 }, action) {
     switch (action.type) {
+        case "INIT": {
+            return {
+                ...state,
+                type: null,
+                output: null
+            }
+        }
+            
         case "JSON_FORMAT": {
             return {
                 ...state,

@@ -23,7 +23,11 @@ export default class RandomString extends Component {
     }
 
     componentDidMount() {
-
+        this.props.dispatch({
+            type: "INIT",
+            payload: {
+            }
+        });
     }
 
     componentDidUpdate() {
