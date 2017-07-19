@@ -1,9 +1,8 @@
 import React from "react"
 import {Route, IndexRoute} from "react-router"
-import DashBoard from "./components/Pages/DashBoard"
+import DashBoard from "./components/Pages/DashBoard/index"
 import PageJson from "./components/Pages/Json/index"
 import RandomString from "./components/Pages/RandomString/index"
-
 import MD5 from "./components/Pages/MD5/index"
 
 export default (

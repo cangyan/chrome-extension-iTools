@@ -3,6 +3,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {AppBar, Drawer, MenuItem, Paper, FlatButton} from 'material-ui';
 import {Link} from 'react-router';
+import "./style.scss";
 
 let muiTheme = getMuiTheme({
     fontFamily: 'Microsoft YaHei'
