@@ -21,9 +21,6 @@
       "exclude_matches": [
         "*://*/*"
       ],
-      "css": [
-        "css/main.css"
-      ],
       "js": [
         "js/app.js"
       ]

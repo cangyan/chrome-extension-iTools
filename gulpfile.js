@@ -4,15 +4,12 @@ var path = require('path');
 var gulp = require('gulp');
 var gutil = require("gulp-util");
 var notify = require("gulp-notify");
-var minifyCSS = require('gulp-minify-css');
 var browserSync = require('browser-sync').create();
 var webpack = require('webpack');
 var webpackConfig = require("./webpack.config.js");
 
 var scriptsDir = './app/';
-var cssDir = './css/';
 var buildDir = './build/';
-var buildCssDir = './build/css/';
 
 var files = [
     './manifest.json',
@@ -38,12 +35,6 @@ gulp.task('browser-watch', function (done) {
     done();
 });
 
-gulp.task('buildCss', function() {
-    return gulp.src('css/*.css')
-        .pipe(minifyCSS())
-        .pipe(gulp.dest(buildCssDir));
-});
-
 gulp.task('buildOtherFiles', function () {
     files.map(function (entry) {
         return gulp.src(entry)
@@ -52,7 +43,6 @@ gulp.task('buildOtherFiles', function () {
 });
 
 gulp.task('auto', function () {
-    gulp.watch(cssDir+'*.css', ['buildCss']);
     gulp.watch(scriptsDir + '**/*.js', ['webpack']);
     gulp.watch(files, ['buildOtherFiles']);
     gulp.watch(scriptsDir+'**/*.scss', ['webpack']);
@@ -68,9 +58,9 @@ gulp.task('webpack', function (callback) {
     });
 })
 
-gulp.task('build', ['buildScript', 'buildCss', 'buildOtherFiles']);
+gulp.task('build', ['buildScript', 'buildOtherFiles']);
 
-gulp.task('default', ['webpack', 'buildCss', 'buildOtherFiles', 'auto'], function () {
+gulp.task('default', ['webpack', 'buildOtherFiles', 'auto'], function () {
     browserSync.init({
         server: {
             baseDir: "./build/",
