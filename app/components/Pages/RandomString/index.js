@@ -43,17 +43,17 @@ export default class RandomString extends Component {
                     <div className="title">请选择生成参数:</div>
                     <Checkbox
                         label="数字(0-9)"
-                        onCheck={ () => this.handleNumericChanged() }
+                        onTouchTap={ () => this.handleNumericChanged() }
                         defaultChecked={this.props.hasNumeric}
                     />
                     <Checkbox
                         label="字母(a-z)"
-                        onCheck={ () => this.handleLowercaseChanged() }
+                        onTouchTap={ () => this.handleLowercaseChanged() }
                         defaultChecked={this.props.hasLowercase}
                     />
                     <Checkbox
                         label="字母(A-Z)"
-                        onCheck={ () => this.handleUppercaseChanged() }
+                        onTouchTap={ () => this.handleUppercaseChanged() }
                         defaultChecked={this.props.hasUppercase}
                     />
                     <TextField

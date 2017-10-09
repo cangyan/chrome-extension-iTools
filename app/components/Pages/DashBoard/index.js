@@ -36,6 +36,7 @@ export default class DashBoard extends Component {
                         <MenuItem containerElement={<Link to="/page_json"/>}>JSON</MenuItem>
                         <MenuItem containerElement={<Link to="/page_random_string"/>}>随机数生成</MenuItem>
                         <MenuItem containerElement={<Link to="/page_md5"/>}>MD5生成</MenuItem>
+                        <MenuItem containerElement={<Link to="/page_string"/>}>字符串处理</MenuItem>
                     </Drawer>
 
                     <div className="container">
