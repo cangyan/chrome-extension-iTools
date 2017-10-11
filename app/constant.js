@@ -31,11 +31,6 @@ export const menuList = [
                 "id": 201,
                 "name": "身份证真伪查询",
                 "url": "page_developing"
-            },
-            {
-                "id": 202,
-                "name": "查询字符串长度",
-                "url": "page_developing"
             }
         ]
     },

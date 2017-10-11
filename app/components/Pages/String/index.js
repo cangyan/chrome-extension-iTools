@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux";
 import {TextField, RaisedButton, Checkbox} from 'material-ui';
 import './style.scss';
-import {stringURLDecode} from '../../../actions/StringAction'
+import {stringURLDecode, calcStringLength, calcStringLengthWithChinese} from '../../../actions/StringAction'
 import {createMD5String} from '../../../actions/MD5Action'
 
 @connect((store) => {
@@ -50,6 +50,10 @@ export default class MD5 extends Component {
                     <RaisedButton label="URL Decode" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringURLDecode() }/>
                     <p />
                     <RaisedButton label="MD5" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleCreateMD5String() }/>
+                    <p />
+                    <RaisedButton label="字符串长度" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringLength() }/>
+                    <p />
+                    <RaisedButton label="字符串长度(中文)" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringLengthWithChinese() }/>
 
                 </div>
                 <div className="cRight">
@@ -69,5 +73,13 @@ export default class MD5 extends Component {
 
     handleCreateMD5String() {
         this.props.dispatch(createMD5String(this.refs.input.getValue()));
+    }
+
+    handleStringLength() {
+        this.props.dispatch(calcStringLength(this.refs.input.getValue()));
+    }
+
+    handleStringLengthWithChinese() {
+        this.props.dispatch(calcStringLengthWithChinese(this.refs.input.getValue()));
     }
 }
