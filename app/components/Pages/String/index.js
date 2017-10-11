@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {TextField, RaisedButton, Checkbox} from 'material-ui';
 import './style.scss';
 import {stringURLDecode} from '../../../actions/StringAction'
+import {createMD5String} from '../../../actions/MD5Action'
 
 @connect((store) => {
     return {
@@ -47,6 +48,8 @@ export default class MD5 extends Component {
                 </div>
                 <div className="cCenter">
                     <RaisedButton label="URL Decode" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringURLDecode() }/>
+                    <p />
+                    <RaisedButton label="MD5" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleCreateMD5String() }/>
 
                 </div>
                 <div className="cRight">
@@ -62,5 +65,9 @@ export default class MD5 extends Component {
 
     handleStringURLDecode() {
         this.props.dispatch(stringURLDecode(this.refs.input.getValue()));
+    }
+
+    handleCreateMD5String() {
+        this.props.dispatch(createMD5String(this.refs.input.getValue()));
     }
 }

@@ -1,6 +1,6 @@
 import md5 from "js-md5";
 
-export function createString(originString) {
+export function createMD5String(originString) {
     var outputString = null;
     try {
         outputString = md5(originString);
