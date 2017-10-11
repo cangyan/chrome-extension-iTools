@@ -20,7 +20,7 @@ export const menuList = [
             {
                 "id": 103,
                 "name": "日期转换",
-                "url": ""
+                "url": "page_developing"
             }
         ]
     },
@@ -30,12 +30,12 @@ export const menuList = [
             {
                 "id": 201,
                 "name": "身份证真伪查询",
-                "url": ""
+                "url": "page_developing"
             },
             {
                 "id": 202,
                 "name": "查询字符串长度",
-                "url": ""
+                "url": "page_developing"
             }
         ]
     },
@@ -45,7 +45,7 @@ export const menuList = [
             {
                 "id": 301,
                 "name": "二维码生成",
-                "url": ""
+                "url": "page_developing"
             }
         ]
     }
