@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from "react"
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {AppBar, Drawer, MenuItem, Paper, FlatButton} from 'material-ui';
+import {AppBar, Drawer, MenuItem, Paper, FlatButton, ListItem} from 'material-ui';
+import * as constants from '../../../constant';
 import {Link} from 'react-router';
 import "./style.scss";
 
@@ -17,6 +18,24 @@ export default class DashBoard extends Component {
     }
 
     render() {
+        let menuList = [];
+
+        for (var i = 0; i < constants.menuList.length; i++) {
+            var subMenu = [];
+            for (var j = 0; j < constants.menuList[i].childList.length; j++) {
+                var key = "sub_menu_"+j;
+                var url = "/" + constants.menuList[i].childList[j]['url'];
+                var name = constants.menuList[i].childList[j]['name'];
+                subMenu.push(<MenuItem key={key} containerElement={<Link to={url} />}>{name}</MenuItem>);
+            }
+
+            var key = "menu_" + i;
+            var text = constants.menuList[i].name;
+            var initOpen = i == 0 ? true : false;
+
+            menuList.push(<ListItem key={key} primaryText={text} initiallyOpen={initOpen} nestedItems={subMenu} />);
+        }
+
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
@@ -31,14 +50,12 @@ export default class DashBoard extends Component {
                         open={this.state.open}
                         onRequestChange={(open) => this.setState({open})}
                     >
-
                         <MenuItem containerElement={<Link to="/"/>}>首页</MenuItem>
-                        <MenuItem containerElement={<Link to="/page_json"/>}>JSON</MenuItem>
-                        <MenuItem containerElement={<Link to="/page_random_string"/>}>随机数生成</MenuItem>
-                        <MenuItem containerElement={<Link to="/page_md5"/>}>MD5生成</MenuItem>
-                        <MenuItem containerElement={<Link to="/page_string"/>}>字符串处理</MenuItem>
-                    </Drawer>
+                        {
+                            menuList
+                        }
 
+                    </Drawer>
                     <div className="container">
                         {this.props.children}
                     </div>
