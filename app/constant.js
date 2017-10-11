@@ -40,7 +40,7 @@ export const menuList = [
             {
                 "id": 301,
                 "name": "二维码生成",
-                "url": "page_developing"
+                "url": "page_qr_code"
             }
         ]
     }
