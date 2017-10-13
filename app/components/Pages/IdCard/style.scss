@@ -1,0 +1,38 @@
+.IdCardWrap {
+  min-height: 486px;
+  margin: 6px;
+
+  .cLeft {
+    min-height: 486px;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    width: 42%;
+    border: 2px solid deepskyblue;
+    box-sizing: border-box;
+    padding: 0 4px 0 4px;
+  }
+
+  .cCenter {
+    min-height: 486px;
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: top;
+    width: 16%;
+    border: 0;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .cRight {
+    min-height: 486px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: top;
+    width: 42%;
+    border: 2px solid deepskyblue;
+    box-sizing: border-box;
+    padding: 0 4px 0 4px;
+    overflow: auto;
+  }
+}

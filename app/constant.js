@@ -30,7 +30,7 @@ export const menuList = [
             {
                 "id": 201,
                 "name": "身份证真伪查询",
-                "url": "page_developing"
+                "url": "page_id_card"
             }
         ]
     },
