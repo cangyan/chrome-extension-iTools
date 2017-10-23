@@ -17,6 +17,6 @@ export default (
         <Route path="page_developing" component={PageDeveloping} />
         <Route path="page_qr_code" component={PageQRCode} />
         <Route path="page_date_convert" component={PageDateConvert} />
-            
+        <Route path="page_id_card" component={PageIdCard} />
     </Route>
 );
