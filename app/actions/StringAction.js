@@ -59,3 +59,22 @@ export function calcStringLengthWithChinese(originString) {
         }
     }
 }
+
+export function convertURLEncodeStringToBulk(originString) {
+    var outputString = '';
+
+    var params = originString.split("&");
+
+    params.forEach(function (param) {
+        var arr = param.split("=");
+        outputString += arr[0] + ":" + arr[1] + '\r\n';
+    });
+
+    return {
+        type: "SUCCESS",
+        payload: {
+            originString: originString,
+            output: outputString
+        }
+    }
+}

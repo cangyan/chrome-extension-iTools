@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux";
 import {TextField, RaisedButton, Checkbox} from 'material-ui';
 import './style.scss';
-import {stringURLDecode, calcStringLength, calcStringLengthWithChinese} from '../../../actions/StringAction'
+import {stringURLDecode, calcStringLength, calcStringLengthWithChinese, convertURLEncodeStringToBulk} from '../../../actions/StringAction'
 import {createMD5String} from '../../../actions/MD5Action'
 
 @connect((store) => {
@@ -54,7 +54,8 @@ export default class MD5 extends Component {
                     <RaisedButton label="字符串长度" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringLength() }/>
                     <p />
                     <RaisedButton label="字符串长度(中文)" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringLengthWithChinese() }/>
-
+                    <p />
+                    <RaisedButton label="postman-bulk" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleURLEncodeStringToBulk() }/>
                 </div>
                 <div className="cRight">
                     <div>
@@ -81,5 +82,9 @@ export default class MD5 extends Component {
 
     handleStringLengthWithChinese() {
         this.props.dispatch(calcStringLengthWithChinese(this.refs.input.getValue()));
+    }
+
+    handleURLEncodeStringToBulk() {
+        this.props.dispatch(convertURLEncodeStringToBulk(this.refs.input.getValue()));
     }
 }
