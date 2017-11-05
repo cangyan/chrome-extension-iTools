@@ -10,6 +10,7 @@ chrome扩展程序-常用开发工具集
 - 查询字符串长度(DONE)
 - 二维码生成(DONE)
 - URL参数转POST BULK格式(DONE)
+- 指定宽，高，颜色等参数图片生成
 - _待补充_
 
 # Screenshot
