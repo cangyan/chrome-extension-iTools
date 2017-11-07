@@ -79,6 +79,20 @@ export function changeHasDisplay(hasDisplay) {
     }
 }
 
-export function createImage() {
+export function createImage(props) {
+    console.log(props);
+    let width = parseInt(props.imageWidth);
+    let height = parseInt(props.imageHeight);
+    if (isNaN(width) || isNaN(height) || (0 > width || width > 6000) || (0 > height || height > 6000)) {
+        return {
+            type: "ERROR",
+            payload: {
+                output: '宽/高度格式不正确'
+            }
+        }
+    }
 
+    return {
+        type: "IMAGE_NEED_CREATE",
+    }
 }
