@@ -8,6 +8,7 @@ import PageDeveloping from "./components/Pages/Developing/index"
 import PageQRCode from "./components/Pages/QRCode/index"
 import PageIdCard from "./components/Pages/IdCard/index"
 import PageDateConvert from "./components/Pages/DateConvert/index"
+import PageCreateImage from "./components/Pages/CreateImage/index"
 
 export default (
     <Route path="/" component={DashBoard}>
@@ -18,5 +19,6 @@ export default (
         <Route path="page_qr_code" component={PageQRCode} />
         <Route path="page_date_convert" component={PageDateConvert} />
         <Route path="page_id_card" component={PageIdCard} />
+        <Route path="page_create_image" component={PageCreateImage} />
     </Route>
 );

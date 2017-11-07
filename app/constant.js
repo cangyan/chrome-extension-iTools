@@ -41,6 +41,11 @@ export const menuList = [
                 "id": 301,
                 "name": "二维码生成",
                 "url": "page_qr_code"
+            },
+            {
+                "id": 302,
+                "name": "指定宽高图片生成",
+                "url": "page_create_image"
             }
         ]
     }
