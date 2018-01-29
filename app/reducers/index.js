@@ -7,6 +7,7 @@ import StringReducer from "./StringReducer"
 import QRCodeReducer from "./QRCodeReducer"
 import DateConvertReducer from "./DateConvertReducer"
 import CreateImageReducer from "./CreateImageReducer"
+import Base64ConvertReducer from "./Base64ConvertReducer"
 
 export default combineReducers({
     JsonReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
     QRCodeReducer,
     StringReducer,
     DateConvertReducer,
-    CreateImageReducer
+    CreateImageReducer,
+    Base64ConvertReducer
 })

@@ -9,6 +9,7 @@ import PageQRCode from "./components/Pages/QRCode/index"
 import PageIdCard from "./components/Pages/IdCard/index"
 import PageDateConvert from "./components/Pages/DateConvert/index"
 import PageCreateImage from "./components/Pages/CreateImage/index"
+import PageBase64ToImg from "./components/Pages/Base64Convert/index"
 
 export default (
     <Route path="/" component={DashBoard}>
@@ -20,5 +21,6 @@ export default (
         <Route path="page_date_convert" component={PageDateConvert} />
         <Route path="page_id_card" component={PageIdCard} />
         <Route path="page_create_image" component={PageCreateImage} />
+        <Route path="page_base64_to_img" component={PageBase64ToImg} />
     </Route>
 );

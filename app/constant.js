@@ -21,6 +21,11 @@ export const menuList = [
                 "id": 103,
                 "name": "日期转换",
                 "url": "page_date_convert"
+            },
+            {
+                "id": 104,
+                "name": "base64转换",
+                "url": "page_base64_to_img"
             }
         ]
     },
