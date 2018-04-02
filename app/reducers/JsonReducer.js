@@ -19,6 +19,14 @@ export default function reducer(state={
             };
         }
 
+        case "JSON_FORMAT_ONE_LINE": {
+            return {
+                ...state,
+                type: action.payload.type,
+                output: action.payload.output,
+            };
+        }
+
         case "JSON_TO_ARRAY": {
             return {
                 ...state,

@@ -27,3 +27,13 @@ export function jsonStringToURLParams(content) {
         }
     }
 }
+
+export function formatJsonStringOneLine(content) {
+    return {
+        type: "JSON_FORMAT_ONE_LINE",
+        payload: {
+            type: 4,
+            output: content
+        }
+    }
+}

@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {TextField, RaisedButton} from 'material-ui';
 import "./style.scss";
 
-import {formatJsonString, jsonStringToArray, jsonStringToURLParams} from "../../../actions/JsonAction"
+import {formatJsonString, jsonStringToArray, jsonStringToURLParams, formatJsonStringOneLine} from "../../../actions/JsonAction"
 
 @connect((store) => {
     return {
@@ -78,6 +78,14 @@ export default class Json extends Component {
                     this.refs.json_output.innerHTML = e;
                 }
                 break;
+            case 4:
+                try {
+                    var json = JSON.parse(this.props.output);
+                    this.refs.json_output.innerHTML = JSON.stringify(json);
+                } catch (e) {
+                    this.refs.json_output.innerHTML = e;
+                }
+                break;
         }
 
     }
@@ -98,6 +106,8 @@ export default class Json extends Component {
                 </div>
                 <div className="cCenter">
                     <RaisedButton label="格式化" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonString() }/>
+                    <p />
+                    <RaisedButton label="格式化(单选)" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonStringOneLine() }/>
                     <p />
                     <RaisedButton label="转为数组" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonToArray() }/>
                     <p />
@@ -124,5 +134,9 @@ export default class Json extends Component {
 
     handleFormatJsonToURLParams() {
         this.props.dispatch(jsonStringToURLParams(this.refs.input.getValue()));
+    }
+
+    handleFormatJsonStringOneLine() {
+        this.props.dispatch(formatJsonStringOneLine(this.refs.input.getValue()));
     }
 }
