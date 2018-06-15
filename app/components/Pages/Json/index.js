@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux";
 import {TextField, RaisedButton} from 'material-ui';
 import "./style.scss";
+import JSONEditor from 'jsoneditor'
+import "jsoneditor/dist/jsoneditor.min.css"
 
 import {formatJsonString, jsonStringToArray, jsonStringToURLParams, formatJsonStringOneLine} from "../../../actions/JsonAction"
 
@@ -19,7 +21,30 @@ export default class Json extends Component {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        let editorValues = this.editor.get()
+        if (
+            JSON.stringify(this.props.values) !== JSON.stringify(nextProps.values) &&
+            JSON.stringify(editorValues) !== JSON.stringify(nextProps.values)
+        ) {
+            this.editor.set(nextProps.values)
+            this.editor.expandAll()
+        }
+    }
+
     componentDidMount() {
+        this.options = {
+            onChange: () => {
+                if (this.props.onChange) {
+                    let newValues = this.editor.get()
+                    this.props.onChange(newValues)
+                }
+            }
+        }
+        this.editor = new JSONEditor(this.container, this.options)
+        this.editor.set("aaa")
+        this.editor.expandAll()
+
         this.props.dispatch({
             type: "INIT",
             payload: {
@@ -93,33 +118,34 @@ export default class Json extends Component {
     render() {
         return (
             <div className="jsonPageWrap">
-                <div className="cLeft">
-                    <TextField
-                        hintText="请输入"
-                        floatingLabelText="待处理JSON串"
-                        multiLine={true}
-                        fullWidth={true}
-                        rows={1}
-                        rowsMax={18}
-                        ref="input"
-                    />
-                </div>
-                <div className="cCenter">
-                    <RaisedButton label="格式化" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonString() }/>
-                    <p />
-                    <RaisedButton label="格式化(单选)" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonStringOneLine() }/>
-                    <p />
-                    <RaisedButton label="转为数组" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonToArray() }/>
-                    <p />
-                    <RaisedButton label="转为URL参数" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonToURLParams() }/>
-                </div>
-                <div className="cRight">
-                    <div>
-                        <pre>
-                            <code ref="json_output" id="json_output"></code>
-                        </pre>
-                    </div>
-                </div>
+                <div className="react-json-editor-wrapper" ref={(el) => {this.container = el}} />
+                {/*<div className="cLeft">*/}
+                    {/*<TextField*/}
+                        {/*hintText="请输入"*/}
+                        {/*floatingLabelText="待处理JSON串"*/}
+                        {/*multiLine={true}*/}
+                        {/*fullWidth={true}*/}
+                        {/*rows={1}*/}
+                        {/*rowsMax={18}*/}
+                        {/*ref="input"*/}
+                    {/*/>*/}
+                {/*</div>*/}
+                {/*<div className="cCenter">*/}
+                    {/*<RaisedButton label="格式化" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonString() }/>*/}
+                    {/*<p />*/}
+                    {/*<RaisedButton label="格式化(单选)" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonStringOneLine() }/>*/}
+                    {/*<p />*/}
+                    {/*<RaisedButton label="转为数组" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonToArray() }/>*/}
+                    {/*<p />*/}
+                    {/*<RaisedButton label="转为URL参数" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleFormatJsonToURLParams() }/>*/}
+                {/*</div>*/}
+                {/*<div className="cRight">*/}
+                    {/*<div>*/}
+                        {/*<pre>*/}
+                            {/*<code ref="json_output" id="json_output"></code>*/}
+                        {/*</pre>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
             </div>
         )
     }

@@ -35,4 +35,16 @@
     padding: 0 4px 0 4px;
     overflow: auto;
   }
+
+  .fullWide {
+    min-height: 486px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: top;
+    width: 95%;
+    border: 2px solid deepskyblue;
+    box-sizing: border-box;
+    padding: 0 4px 0 4px;
+    overflow: auto;
+  }
 }
