@@ -12,9 +12,11 @@ var scriptsDir = './app/';
 var buildDir = './build/';
 
 var files = [
+    'eventPage.js',
     './manifest.json',
     'popup.html',
-    'icon.png'
+    'icon.png',
+    'index.html'
 ];
 
 var myDevConfig = Object.create(webpackConfig);

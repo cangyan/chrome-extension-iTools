@@ -18,12 +18,11 @@ export default class JsonPlus extends Component {
             modes: ['text', 'code', 'tree', 'form', 'view'],
             mode: 'code',
             ace: ace
-
         };
 
         let json = {};
 
-        this.editor = new JSONEditor(this.container, options, json)
+        new JSONEditor(this.container, options, json)
     }
 
     componentDidUpdate() {

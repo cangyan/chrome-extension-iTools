@@ -7,11 +7,18 @@
     "128": "icon.png"
   },
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_title": "",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
   },
   "permissions": [
-    "notifications"
+    "tabs",
+    "notifications",
+    "activeTab",
+    "storage"
   ],
   "content_scripts": [
     {
