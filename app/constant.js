@@ -3,8 +3,13 @@ export const menuList = [
         "name": "开发相关",
         "childList": [
             {
+                "id": 105,
+                "name": "json串生成",
+                "url": "page_json_plus"
+            },
+            {
                 "id": 101,
-                "name": "json串处理",
+                "name": "json串转换",
                 "url": "page_json"
             },
             {

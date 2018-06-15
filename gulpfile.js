@@ -46,6 +46,7 @@ gulp.task('auto', function () {
     gulp.watch(scriptsDir + '**/*.js', ['webpack']);
     gulp.watch(files, ['buildOtherFiles']);
     gulp.watch(scriptsDir+'**/*.scss', ['webpack']);
+    gulp.watch(scriptsDir+'**/*.css', ['webpack']);
 });
 
 gulp.task('webpack', function (callback) {
