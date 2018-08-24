@@ -1,7 +1,7 @@
 /* dark styling of the editor */
 div.jsoneditor {
     position: unset;
-    min-height: 486px;
+    min-height: 686px;
 }
 
 div.jsoneditor,
@@ -81,7 +81,7 @@ div.jsoneditor-value.jsoneditor-invalid {
 }
 
 div.ace-jsoneditor, textarea.jsoneditor-text {
-    min-height: 426px;
-    height: 456px
+    min-height: 626px;
+    height: 656px
 ;
 }
