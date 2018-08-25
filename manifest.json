@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "程序员常用工具集",
   "description": "面向接口开发人员各种常用小工具集合.",
-  "version": "1.0.4",
+  "version": "1.1.6",
   "icons": {
     "128": "icon.png"
   },
@@ -20,6 +20,7 @@
     "activeTab",
     "storage"
   ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [
     {
       "matches": [
