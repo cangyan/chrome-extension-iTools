@@ -11,6 +11,8 @@ chrome扩展程序-常用开发工具集
 - 二维码生成(DONE)
 - URL参数转POST BULK格式(DONE)
 - 指定宽，高，颜色等参数图片生成(DONE)
+- base64转图片(DONE)
+- php反序列化
 - _待补充_
 
 # Screenshot
