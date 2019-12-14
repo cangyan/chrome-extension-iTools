@@ -21,6 +21,31 @@ export function stringURLDecode(originString) {
     }
 }
 
+export function UnicodeToChar(originString) {
+    let unescapeJs = require('unescape-js');
+    let outputString = null;
+    try {
+        outputString = unescapeJs(originString);
+        console.log(originString, outputString)
+    } catch (e) {
+        return {
+            type: "ERROR",
+            payload: {
+                originString: originString,
+                output: e
+            }
+        }
+    }
+
+    return {
+        type: "SUCCESS",
+        payload: {
+            originString: originString,
+            output: outputString
+        }
+    }
+}
+
 export function calcStringLength(originString) {
     return {
         type: "SUCCESS",
@@ -38,7 +63,7 @@ export function calcStringLengthWithChinese(originString) {
             if ((originString.charCodeAt(i) & 0xff00) != 0) {
                 outputString++;
             }
-    
+
             outputString++;
         }
     } catch (e) {

@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux";
 import {TextField, RaisedButton, Checkbox} from 'material-ui';
 import './style.scss';
-import {stringURLDecode, calcStringLength, calcStringLengthWithChinese, convertURLEncodeStringToBulk, phpUnSerialize} from '../../../actions/StringAction'
+import {stringURLDecode, calcStringLength, calcStringLengthWithChinese, convertURLEncodeStringToBulk, phpUnSerialize, UnicodeToChar} from '../../../actions/StringAction'
 import {createMD5String} from '../../../actions/MD5Action'
 
 @connect((store) => {
@@ -49,6 +49,8 @@ export default class MD5 extends Component {
                 <div className="cCenter">
                     <RaisedButton label="URL Decode" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringURLDecode() }/>
                     <p />
+                    <RaisedButton label="Unicode转字符" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleUnicodeToChar() }/>
+                    <p />
                     <RaisedButton label="MD5" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleCreateMD5String() }/>
                     <p />
                     <RaisedButton label="字符串长度" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringLength() }/>
@@ -72,6 +74,10 @@ export default class MD5 extends Component {
 
     handleStringURLDecode() {
         this.props.dispatch(stringURLDecode(this.refs.input.getValue()));
+    }
+
+    handleUnicodeToChar() {
+        this.props.dispatch(UnicodeToChar(this.refs.input.getValue()));
     }
 
     handleCreateMD5String() {

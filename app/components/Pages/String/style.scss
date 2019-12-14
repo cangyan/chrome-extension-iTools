@@ -33,6 +33,7 @@
     border: 2px solid deepskyblue;
     box-sizing: border-box;
     padding: 0 4px 0 4px;
-    overflow: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }

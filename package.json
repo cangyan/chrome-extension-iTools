@@ -53,6 +53,7 @@
     "redux-logger": "^2.7.4",
     "redux-promise": "^0.5.3",
     "redux-promise-middleware": "^4.2.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "unescape-js": "^1.1.4"
   }
 }
