@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux";
 import {TextField, RaisedButton, Checkbox} from 'material-ui';
 import './style.scss';
+import {decode, encode} from "../../../actions/Base64Action";
 
 @connect((store) => {
     return {
@@ -21,8 +22,7 @@ export default class Base64ToImg extends Component {
     componentDidMount() {
         this.props.dispatch({
             type: "INIT",
-            payload: {
-            }
+            payload: {}
         });
     }
 
@@ -36,7 +36,8 @@ export default class Base64ToImg extends Component {
                 <div className="cLeft">
                     <TextField
                         hintText="请输入"
-                        floatingLabelText="data:image/jpeg;base64,..."
+                        // floatingLabelText="data:image/jpeg;base64,..."
+                        floatingLabelText="..."
                         multiLine={true}
                         fullWidth={true}
                         rows={1}
@@ -45,11 +46,21 @@ export default class Base64ToImg extends Component {
                     />
                 </div>
                 <div className="cCenter">
-                    <RaisedButton label="转图片" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleBase64ToImg() }/>
-                    <p />
+                    <RaisedButton label="encode" labelStyle={{fontSize: '12px'}} primary={true}
+                                  onTouchTap={() => this.handleBase64Encode()}/>
+                    <p/>
+                    <RaisedButton label="decode" labelStyle={{fontSize: '12px'}} primary={true}
+                                  onTouchTap={() => this.handleBase64ToString()}/>
+                    <p/>
+                    {/*<RaisedButton label="转图片" labelStyle={{fontSize: '12px'}} primary={true}*/}
+                                  {/*onTouchTap={() => this.handleBase64ToImg()}/>*/}
+                    {/*<p/>*/}
                 </div>
                 <div className="cRight">
-                    <img src={this.props.output} />
+                    <pre>
+                        <code>{this.props.output}</code>
+                    </pre>
+                    <img src={this.props.output}/>
                 </div>
             </div>
         );
@@ -64,6 +75,18 @@ export default class Base64ToImg extends Component {
                     output: this.refs.input.getValue()
                 }
             }
+        );
+    }
+
+    handleBase64Encode() {
+        this.props.dispatch(
+            encode(this.refs.input.getValue())
+        );
+    }
+
+    handleBase64ToString() {
+        this.props.dispatch(
+            decode(this.refs.input.getValue())
         );
     }
 }

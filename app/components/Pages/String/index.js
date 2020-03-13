@@ -49,7 +49,7 @@ export default class MD5 extends Component {
                 <div className="cCenter">
                     <RaisedButton label="URL Decode" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleStringURLDecode() }/>
                     <p />
-                    <RaisedButton label="Unicode转字符" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleUnicodeToChar() }/>
+                    <RaisedButton label="Unicode转字符/去反斜杠" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleUnicodeToChar() }/>
                     <p />
                     <RaisedButton label="MD5" labelStyle={{fontSize: '12px'}} primary={true} onTouchTap={ () => this.handleCreateMD5String() }/>
                     <p />
