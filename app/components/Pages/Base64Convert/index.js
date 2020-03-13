@@ -60,7 +60,6 @@ export default class Base64ToImg extends Component {
                     <pre>
                         <code>{this.props.output}</code>
                     </pre>
-                    <img src={this.props.output}/>
                 </div>
             </div>
         );
