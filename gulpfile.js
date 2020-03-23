@@ -16,7 +16,10 @@ var files = [
     './manifest.json',
     'popup.html',
     'icon.png',
-    'index.html'
+    'index.html',
+    'images/**',
+    'sw.js',
+    'fallback.html',
 ];
 
 var myDevConfig = Object.create(webpackConfig);
@@ -45,6 +48,7 @@ gulp.task('buildOtherFiles', function () {
 });
 
 gulp.task('auto', function () {
+    gulp.watch( 'sw.js', ['webpack']);
     gulp.watch(scriptsDir + '**/*.js', ['webpack']);
     gulp.watch(files, ['buildOtherFiles']);
     gulp.watch(scriptsDir+'**/*.scss', ['webpack']);
